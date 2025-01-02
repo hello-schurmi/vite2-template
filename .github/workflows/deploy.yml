@@ -28,6 +28,5 @@ jobs:
 
       - name: Deploy to GitHub Pages  # 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_PAGES_PAT }}  # 使用个人访问令牌
+        with: 
           publish_dir: ./dist  # 发布目录为 dist
