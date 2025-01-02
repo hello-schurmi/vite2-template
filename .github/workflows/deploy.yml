@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 触发条件：当推送到 main 分支时触发
+      - master  # 触发条件：当推送到 master 分支时触发
 
 jobs:
   build-and-deploy:
@@ -15,7 +15,8 @@ jobs:
 
       - name: Set up Node.js  # 设置 Node.js 环境
         uses: actions/setup-node@v3
-       
+        with:
+          node-version: '20'  # 使用 Node.js 版本 20
 
       - name: Install dependencies  # 安装依赖
         run: npm install
@@ -26,4 +27,8 @@ jobs:
       - name: List files in dist directory  # 调试步骤：列出 dist 目录中的文件
         run: ls -la dist || echo "dist directory not found"
 
-      
+      - name: Deploy to GitHub Pages  # 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAGES_PAT }}  # 使用个人访问令牌
+          publish_dir: ./dist  # 发布目录为 dist
