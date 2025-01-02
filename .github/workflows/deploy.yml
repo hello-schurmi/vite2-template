@@ -26,7 +26,4 @@ jobs:
       - name: List files in dist directory  # 调试步骤：列出 dist 目录中的文件
         run: ls -la dist || echo "dist directory not found"
 
-      - name: Deploy to GitHub Pages  # 部署到 GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with: 
-          publish_dir: ./dist  # 发布目录为 dist
+      
